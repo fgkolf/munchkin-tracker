@@ -1,41 +1,38 @@
 import React, { Component } from 'react'
-import { SplashScreen } from 'expo';
 import { FlatList, StyleSheet, View } from 'react-native'
-import * as Font from 'expo-font'
 import PlayerTile from './views/PlayerTile'
-import quasimodo from './assets/fonts/quasimodo.ttf'
+import FontLoader from './views/FontLoader'
 
 export default class App extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      players: ['player1', 'player2', 'player3', 'player4'],
-      fontLoaded: false
-    }
-    SplashScreen.preventAutoHide()
+    this.state = { players: ['new'] }
+    this.addPlayer = this.addPlayer.bind(this)
   }
 
-  async componentDidMount () {
-    try {
-      await Font.loadAsync({ quasimodo: quasimodo })
-    } finally {
-      this.setState({ ...this.state, fontLoaded: true })
-      SplashScreen.hide()
-    }
+  addPlayer () {
+    const playersLength = this.state.players.length
+    this.setState({
+      players: [
+        ...this.state.players.slice(0, playersLength - 1),
+        'player',
+        ...this.state.players.slice(playersLength - 1)
+      ]
+    })
   }
 
   render () {
     return (
-      this.state.fontLoaded ? (
+      <FontLoader>
         <View style={styles.container}>
           <FlatList
             data={this.state.players}
-            renderItem={(player) => (<PlayerTile player={player} />)}
+            renderItem={(player) => (<PlayerTile player={player} addPlayer={this.addPlayer} />)}
             numColumns={2}
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
-      ) : null
+      </FontLoader>
     )
   }
 }

@@ -4,7 +4,7 @@ import { DecreaseButton, IncreaseButton } from './Buttons'
 
 const Row = ({ label, value, onIncrease, onDecrease, size }) => (
   <View style={styles.row}>
-    <Text style={size === 'large' ? styles.largeLabel : styles.label}>{label}: {value}</Text>
+    <Text style={size === 'large' ? styles.largeLabel : styles.label}>{label} {value}</Text>
     <View style={styles.buttons}>
       <IncreaseButton onIncrease={onIncrease} />
       <DecreaseButton onDecrease={onDecrease} />
