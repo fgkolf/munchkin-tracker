@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
-import PlayerTile from './PlayerTile'
+import PlayerTile from './views/PlayerTile'
 
 export default class App extends Component {
   constructor (props) {

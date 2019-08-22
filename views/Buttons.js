@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Image, TouchableOpacity } from 'react-native'
-import minus from './assets/minus-symbol.png'
-import plus from './assets/plus.png'
+import minus from '../assets/minus-symbol.png'
+import plus from '../assets/plus.png'
 
 const Button = ({ onPress, icon }) => (
   <TouchableOpacity style={styles.icon} onPress={onPress}>
