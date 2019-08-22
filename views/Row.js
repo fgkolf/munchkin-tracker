@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   row: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    margin: 2
   },
   label: {
     color: '#682F28',

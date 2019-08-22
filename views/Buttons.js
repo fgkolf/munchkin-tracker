@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Image, TouchableOpacity } from 'react-native'
-import minus from '../assets/minus-symbol.png'
+import minus from '../assets/minus.png'
 import plus from '../assets/plus.png'
 
 const Button = ({ onPress, icon }) => (
@@ -11,8 +11,9 @@ const Button = ({ onPress, icon }) => (
 
 const styles = StyleSheet.create({
   icon: {
-    width: 40,
-    height: 40
+    width: 32,
+    height: 32,
+    marginLeft: 2
   }
 })
 
