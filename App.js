@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import PlayerTile from './views/PlayerTile'
 import FontLoader from './views/FontLoader'
+import BottomMenu from './views/BottomMenu'
 
 export default class App extends Component {
   constructor (props) {
@@ -32,6 +33,7 @@ export default class App extends Component {
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
+        {this.state.players.length > 2 && <BottomMenu />}
       </FontLoader>
     )
   }
