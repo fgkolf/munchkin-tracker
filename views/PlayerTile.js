@@ -41,6 +41,7 @@ export default class PlayerTile extends Component {
           value={this.state.level}
           onIncrease={this.handleIncrease}
           onDecrease={this.handleDecrease}
+          size='large'
         />
         <Row
           label='gear'
@@ -59,18 +60,20 @@ const styles = StyleSheet.create({
     flex: 0.5,
     flexDirection: 'column',
     margin: 3,
-    height: 200,
+    height: 210,
     backgroundColor: '#FBDCAE',
     padding: 3,
     borderRadius: 20
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     marginBottom: 10,
-    color: '#682F28'
+    color: '#682F28',
+    fontFamily: 'quasimodo'
   },
   total: {
-    fontSize: 18,
-    color: '#682F28'
+    fontSize: 15,
+    color: '#682F28',
+    fontFamily: 'quasimodo'
   }
 })
