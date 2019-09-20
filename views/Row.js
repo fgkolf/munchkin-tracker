@@ -6,8 +6,8 @@ const Row = ({ label, value, onIncrease, onDecrease, size }) => (
   <View style={styles.row}>
     <Text style={size === 'large' ? styles.largeLabel : styles.label}>{label} {value}</Text>
     <View style={styles.buttons}>
-      <IncreaseButton onIncrease={onIncrease} />
       <DecreaseButton onDecrease={onDecrease} />
+      <IncreaseButton onIncrease={onIncrease} />
     </View>
   </View>
 )
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   },
   label: {
     color: '#682F28',
-    fontSize: 15,
+    fontSize: 17,
     fontFamily: 'quasimodo'
   },
   largeLabel: {
     color: '#682F28',
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'quasimodo'
   },
   buttons: {

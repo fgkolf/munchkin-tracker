@@ -52,7 +52,7 @@ export default class PlayerTile extends Component {
               onIncrease={this.handleGearIncrease}
               onDecrease={this.handleGearDecrease}
             />
-            <Text style={styles.total}>Total: {this.state.level + this.state.gear}</Text>
+            <Text style={styles.total}>Total {this.state.level + this.state.gear}</Text>
           </View>
         )
     )
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   total: {
-    fontSize: 15,
+    fontSize: 17,
     color: '#682F28',
     fontFamily: 'quasimodo'
   },
