@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-import minus from '../assets/minus.png';
-import plus from '../assets/plus.png';
+import minus from '../../../assets/minus.png';
+import plus from '../../../assets/plus.png';
 
 const styles = StyleSheet.create({
   icon: {

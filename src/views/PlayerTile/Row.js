@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { DecreaseButton, IncreaseButton } from './Buttons';
+import MunchkinText from '../Common/MunchkinText';
 
 const styles = StyleSheet.create({
   row: {
@@ -10,14 +11,10 @@ const styles = StyleSheet.create({
     margin: 2
   },
   label: {
-    color: '#682F28',
-    fontSize: 17,
-    fontFamily: 'quasimodo'
+    fontSize: 20
   },
   largeLabel: {
-    color: '#682F28',
-    fontSize: 22,
-    fontFamily: 'quasimodo'
+    fontSize: 25
   },
   buttons: {
     display: 'flex',
@@ -27,9 +24,9 @@ const styles = StyleSheet.create({
 
 const Row = ({ label, value, onIncrease, onDecrease, size }) => (
   <View style={styles.row}>
-    <Text style={size === 'large' ? styles.largeLabel : styles.label}>
+    <MunchkinText style={size === 'large' ? styles.largeLabel : styles.label}>
       {label} {value}
-    </Text>
+    </MunchkinText>
     <View style={styles.buttons}>
       <DecreaseButton onDecrease={onDecrease} />
       <IncreaseButton onIncrease={onIncrease} />
