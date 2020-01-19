@@ -1,69 +1,7 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Row from './Row'
-import PlayerName from './PlayerName'
-
-export default class PlayerTile extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { level: 1, gear: 0 }
-    this.handleIncrease = this.handleIncrease.bind(this)
-    this.handleDecrease = this.handleDecrease.bind(this)
-    this.handleGearIncrease = this.handleGearIncrease.bind(this)
-    this.handleGearDecrease = this.handleGearDecrease.bind(this)
-  }
-
-  handleIncrease () {
-    if (this.state.level < 10) {
-      this.setState({ ...this.state, level: this.state.level + 1 })
-    }
-  }
-
-  handleDecrease () {
-    if (this.state.level > 1) {
-      this.setState({ ...this.state, level: this.state.level - 1 })
-    }
-  }
-
-  handleGearIncrease () {
-    this.setState({ ...this.state, gear: this.state.gear + 1 })
-  }
-
-  handleGearDecrease () {
-    this.setState({ ...this.state, gear: this.state.gear - 1 })
-  }
-
-  render () {
-    return (
-      this.props.player.item === 'new' ? <NewPlayerTile addPlayer={this.props.addPlayer} />
-        : (
-          <View style={styles.playerTile}>
-            <PlayerName index={this.props.player.index} />
-            <Row
-              label='level'
-              value={this.state.level}
-              onIncrease={this.handleIncrease}
-              onDecrease={this.handleDecrease}
-              size='large'
-            />
-            <Row
-              label='gear'
-              value={this.state.gear}
-              onIncrease={this.handleGearIncrease}
-              onDecrease={this.handleGearDecrease}
-            />
-            <Text style={styles.total}>Total {this.state.level + this.state.gear}</Text>
-          </View>
-        )
-    )
-  }
-}
-
-const NewPlayerTile = ({ addPlayer }) => (
-  <TouchableOpacity style={styles.playerTile} onPress={addPlayer}>
-    <Text style={styles.title}>Add a new player</Text>
-  </TouchableOpacity>
-)
+import React, { Component } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Row from './Row';
+import PlayerName from './PlayerName';
 
 const styles = StyleSheet.create({
   playerTile: {
@@ -87,4 +25,81 @@ const styles = StyleSheet.create({
     color: '#682F28',
     fontFamily: 'quasimodo'
   }
-})
+});
+
+export default class PlayerTile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { level: 1, gear: 0 };
+    this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
+    this.handleGearIncrease = this.handleGearIncrease.bind(this);
+    this.handleGearDecrease = this.handleGearDecrease.bind(this);
+  }
+
+  handleIncrease() {
+    const { level } = this.state;
+    if (level < 10) {
+      this.setState(prevState => ({
+        ...prevState,
+        level: prevState.level + 1
+      }));
+    }
+  }
+
+  handleDecrease() {
+    const { level } = this.state;
+    if (level > 1) {
+      this.setState(prevState => ({
+        ...prevState,
+        level: prevState.level - 1
+      }));
+    }
+  }
+
+  handleGearIncrease() {
+    this.setState(prevState => ({
+      ...prevState,
+      gear: prevState.gear + 1
+    }));
+  }
+
+  handleGearDecrease() {
+    this.setState(prevState => ({
+      ...prevState,
+      gear: prevState.gear - 1
+    }));
+  }
+
+  render() {
+    const { player, addPlayer } = this.props;
+    const { level, gear } = this.state;
+    return player.item === 'new' ? (
+      <NewPlayerTile addPlayer={addPlayer} />
+    ) : (
+      <View style={styles.playerTile}>
+        <PlayerName index={player.index} />
+        <Row
+          label="level"
+          value={level}
+          onIncrease={this.handleIncrease}
+          onDecrease={this.handleDecrease}
+          size="large"
+        />
+        <Row
+          label="gear"
+          value={gear}
+          onIncrease={this.handleGearIncrease}
+          onDecrease={this.handleGearDecrease}
+        />
+        <Text style={styles.total}>Total {level + gear}</Text>
+      </View>
+    );
+  }
+}
+
+const NewPlayerTile = ({ addPlayer }) => (
+  <TouchableOpacity style={styles.playerTile} onPress={addPlayer}>
+    <Text style={styles.title}>Add a new player</Text>
+  </TouchableOpacity>
+);

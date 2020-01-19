@@ -1,16 +1,6 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { DecreaseButton, IncreaseButton } from './Buttons'
-
-const Row = ({ label, value, onIncrease, onDecrease, size }) => (
-  <View style={styles.row}>
-    <Text style={size === 'large' ? styles.largeLabel : styles.label}>{label} {value}</Text>
-    <View style={styles.buttons}>
-      <DecreaseButton onDecrease={onDecrease} />
-      <IncreaseButton onIncrease={onIncrease} />
-    </View>
-  </View>
-)
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { DecreaseButton, IncreaseButton } from './Buttons';
 
 const styles = StyleSheet.create({
   row: {
@@ -33,6 +23,18 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row'
   }
-})
+});
 
-export default Row
+const Row = ({ label, value, onIncrease, onDecrease, size }) => (
+  <View style={styles.row}>
+    <Text style={size === 'large' ? styles.largeLabel : styles.label}>
+      {label} {value}
+    </Text>
+    <View style={styles.buttons}>
+      <DecreaseButton onDecrease={onDecrease} />
+      <IncreaseButton onIncrease={onIncrease} />
+    </View>
+  </View>
+);
+
+export default Row;

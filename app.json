@@ -23,10 +23,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.fgkolf.munchkin_tracker"
-    },
     "android": {
       "package": "com.fgkolf.munchkin_tracker"
     }
