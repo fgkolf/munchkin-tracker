@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import PlayerList from './src/views/PlayerList/PlayerList';
 import FontLoader from './src/views/Common/FontLoader';
 import BottomMenu from './src/views/Menu/BottomMenu';
+import { StateProvider } from './src/store/store';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,12 +28,14 @@ const App = () => {
   };
 
   return (
-    <FontLoader>
-      <View style={styles.container}>
-        <PlayerList players={players} />
-        <BottomMenu addPlayer={addPlayer} removePlayer={removePlayer} />
-      </View>
-    </FontLoader>
+    <StateProvider>
+      <FontLoader>
+        <View style={styles.container}>
+          <PlayerList players={players} />
+          <BottomMenu addPlayer={addPlayer} removePlayer={removePlayer} />
+        </View>
+      </FontLoader>
+    </StateProvider>
   );
 };
 

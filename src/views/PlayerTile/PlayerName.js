@@ -6,7 +6,7 @@ import {
   TextInput,
   Easing
 } from 'react-native';
-import MunchkinText from '../Common/MunchkinText';
+import EndGameModal from './EndGameModal';
 
 const styles = StyleSheet.create({
   title: {
@@ -46,7 +46,7 @@ const BlinkingText = ({ children, stopBlinking }) => {
   );
 };
 
-const PlayerName = ({ index }) => {
+const PlayerName = ({ index, level }) => {
   const DEFAULT_NAME = `Player ${index + 1}`;
   const [name, setName] = useState(DEFAULT_NAME);
   const [editMode, setEditMode] = useState(false);
@@ -62,18 +62,21 @@ const PlayerName = ({ index }) => {
     setEdited(true);
   };
 
-  return editMode ? (
-    <MunchkinText>
-      <TextInput
-        style={styles.title}
-        autoFocus
-        onEndEditing={handleEndEditing}
-      />
-    </MunchkinText>
-  ) : (
-    <TouchableOpacity onLongPress={handleLongPress}>
-      <BlinkingText stopBlinking={edited}>{name}</BlinkingText>
-    </TouchableOpacity>
+  return (
+    <>
+      {editMode ? (
+        <TextInput
+          style={styles.title}
+          autoFocus
+          onEndEditing={handleEndEditing}
+        />
+      ) : (
+        <TouchableOpacity onLongPress={handleLongPress}>
+          <BlinkingText stopBlinking={edited}>{name}</BlinkingText>
+        </TouchableOpacity>
+      )}
+      {level > 9 && <EndGameModal name={name} />}
+    </>
   );
 };
 

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Row from './Row';
 import PlayerName from './PlayerName';
 import MunchkinText from '../Common/MunchkinText';
+import { store, startGameAction } from '../../store/store';
+import GAME_STATUS from '../../common/constants';
 
 const styles = StyleSheet.create({
   playerTile: {
@@ -20,8 +22,20 @@ const styles = StyleSheet.create({
 });
 
 const PlayerTile = ({ index }) => {
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(0);
   const [gear, setGear] = useState(0);
+  const {
+    state: { gameStatus },
+    dispatch
+  } = useContext(store);
+
+  useEffect(() => {
+    if (gameStatus === GAME_STATUS.END) {
+      setLevel(0);
+      setGear(0);
+      dispatch(startGameAction());
+    }
+  }, [gameStatus]);
 
   const handleIncrease = () => {
     if (level < 10) {
@@ -45,7 +59,7 @@ const PlayerTile = ({ index }) => {
 
   return (
     <View style={styles.playerTile}>
-      <PlayerName index={index} />
+      <PlayerName index={index} level={level} />
       <Row
         label="level"
         value={level}
