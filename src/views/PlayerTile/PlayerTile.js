@@ -21,9 +21,12 @@ const styles = StyleSheet.create({
   }
 });
 
+const INITIAL_LEVEL = 1;
+const INITIAL_GEAR = 0;
+
 const PlayerTile = ({ index }) => {
-  const [level, setLevel] = useState(1);
-  const [gear, setGear] = useState(0);
+  const [level, setLevel] = useState(INITIAL_LEVEL);
+  const [gear, setGear] = useState(INITIAL_GEAR);
   const {
     state: { gameStatus },
     dispatch
@@ -31,8 +34,8 @@ const PlayerTile = ({ index }) => {
 
   useEffect(() => {
     if (gameStatus === GAME_STATUS.END) {
-      setLevel(0);
-      setGear(0);
+      setLevel(INITIAL_LEVEL);
+      setGear(INITIAL_GEAR);
       dispatch(startGameAction());
     }
   }, [gameStatus]);
