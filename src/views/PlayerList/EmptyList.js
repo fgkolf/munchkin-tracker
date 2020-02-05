@@ -4,7 +4,7 @@ import MunchkinText from '../Common/MunchkinText';
 
 const styles = StyleSheet.create({
   empty: {
-    color: '#FBDCAE',
+    color: '#F3D994',
     fontSize: 25
   }
 });

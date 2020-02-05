@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     flexDirection: 'column',
     height: 210,
-    backgroundColor: '#FBDCAE',
+    backgroundColor: '#F3D994',
     borderRadius: 20,
     margin: 3,
     padding: 3
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 const PlayerTile = ({ index }) => {
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(1);
   const [gear, setGear] = useState(0);
   const {
     state: { gameStatus },

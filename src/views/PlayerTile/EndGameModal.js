@@ -6,7 +6,7 @@ import { store, endGameAction } from '../../store/store';
 
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: '#FBDCAE',
+    backgroundColor: '#F3D994',
     padding: 22,
     borderRadius: 15
   },
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   contentBtn: {
     backgroundColor: '#682F28',
-    color: '#FBDCAE',
+    color: '#F3D994',
     fontSize: 20,
     padding: 10,
     borderRadius: 15
